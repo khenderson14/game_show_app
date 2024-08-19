@@ -8,25 +8,11 @@ const overlay = document.querySelector('#overlay');
 let missed = 0;
 
 const phrases = [
-    'FOOL ME ONCE SHAME ON YOU FOOL ME TWICE SHAME ON ME',
-    'HOGWARTS SCHOOL OF WITCHCRAFT AND WIZARDRY',
-    'ANYTHING IS POSSIBLE',
-    'NO PLACE LIKE HOME',
-    'JUST KEEP SWIMMING',
-    'YOU IS KIND YOU IS SMART YOU IS IMPORTANT',
-    'HASTA LA VISTA BABY',
-    'INCONCEIVABLE',
-    'TO INFINITY AND BEYOND',
-    'YOU HAD ME AT HELLO',
-    'ABRACADABRA',
-    'SAY HELLO TO MY LITTLE FRIEND',
-    'CARRY ON MY WAYWORD SON',
-    'FORGET ABOUT IT',
-    'CAPTAIN JACK SPARROW',
-    'BECAUSE I SAID SO',
-    'THE ONLY THING WE HAVE TO FEAR IS FEAR ITSELF',
-    'I HAVE A DREAM',
-    'HOUSTON WE HAVE A PROBLEM'
+    'MAY THE FORCE BE WITH YOU',
+    'HERES TO LOOKING AT YOU KID',
+    'YOU CANT HANDLE THE TRUTH',
+    'IM GOING TO MAKE HIM AN OFFER HE CANT REFUSE',
+    'LIFE IS LIKE A BOX OF CHOCOLATES YOU NEVER KNOW WHAT YOURE GONNA GET'
 ];
 
 startButton.addEventListener('click', () => {
@@ -39,7 +25,7 @@ startButton.addEventListener('click', () => {
 });
 
 function getRandomPhraseAsArray(arr) {
-    // function fetches a random phrase from the phrases array
+    // function gets a random phrase from the phrases array
     let randomNumber = Math.floor(Math.random() * arr.length);
     let phrase = arr[randomNumber];
     localStorage.setItem('recentPhrase', phrase);
@@ -72,6 +58,7 @@ function addPhraseToDisplay(arr) {
 addPhraseToDisplay(phraseToDisplay);
 
 function checkLetter (clickedButton) {
+    //function loops over letters and checks if they match the letter chosen
     lettersInPhrase = document.querySelectorAll('.letter');
     let match = null;
     for (let i = 0; i < lettersInPhrase.length; i++) {
@@ -84,6 +71,7 @@ function checkLetter (clickedButton) {
 }
 
 buttonDiv.addEventListener('click', (e) => {
+    //allows the button to only be chosen once and checks if the letter is in the phrase
     if (e.target.tagName === 'BUTTON') {
         const clickedButton = e.target;
         clickedButton.classList.add('chosen');
@@ -98,6 +86,7 @@ buttonDiv.addEventListener('click', (e) => {
 });
 
 function checkWin () {
+    //function that checks whether game has been won or lost
     letterLis = document.querySelectorAll('.letter');
     showLis = document.querySelectorAll('.show');
     if (letterLis.length === showLis.length) {
@@ -122,6 +111,7 @@ function checkWin () {
 }
 
 function reset() {
+    //function that resets the game, generates a new random phase and resets number of misses
     missed = 0;
     const ul = document.querySelector('#phrase ul');
     const wordDivs = document.querySelectorAll('.word-div');
